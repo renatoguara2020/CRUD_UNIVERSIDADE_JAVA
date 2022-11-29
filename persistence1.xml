@@ -19,6 +19,6 @@ ns/ persistence / persistence_2_0 . xsd ">
  < property name ="javax.persistence.jdbc.password" value ="senha"/ >
 
 < property name ="javax.persistence.jdbc.url" value ="jdbc:mysql://localhost:3306/k19-db />
-</ properties >
-</ persistence-unit >
-</ persistence 
+</properties>
+</persistence-unit>
+</persistence>
