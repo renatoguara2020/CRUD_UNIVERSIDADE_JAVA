@@ -5,6 +5,7 @@ import javax.persistence.Persistence ;
 public class ListaEditorasComJPA {
 
  public static void main ( String [] args ) {
+    
  EntityManagerFactory factory = Persistence.createEntityManagerFactory("livraria-pu");
 
  EntityManager manager = factory.createEntityManager();
