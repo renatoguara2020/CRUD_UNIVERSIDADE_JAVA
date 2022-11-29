@@ -1,0 +1,49 @@
+package material.jdbc;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+/**
+ * Classe utilizada para demonstrar como adicionar ou atualizar dados
+ *  no banco de dados.
+ */
+public class Manipulacao {
+  public static void main(String[] args) {
+    Manipulacao manipulacao = new Manipulacao();
+    manipulacao.inserir();
+    manipulacao.atualizar();
+  }
+
+  public void inserir() {
+    Conexao conexao = new Conexao();
+    Connection conn = conexao.conectar();
+    try {
+      String adicionar = "INSERT INTO PESSOA (NOME, IDADE) VALUES ('Rafael', 25)";
+
+      Statement stm = conn.createStatement();
+      stm.execute(adicionar);
+      System.out.println("Adicionou a pessoa Rafael no BD.");
+    } catch (SQLException ex) {
+      System.out.println("Não conseguiu adicionar uma pessoa no BD.");
+    } finally {
+      conexao.desconectar(conn);
+    }
+  }
+
+  public void atualizar() {
+    Conexao conexao = new Conexao();
+    Connection conn = conexao.conectar();
+    try {
+      String atualizar = "UPDATE PESSOA SET NOME = 'Cristiano' WHERE NOME = 'Rafael'";
+
+      Statement stm = conn.createStatement();
+      stm.executeUpdate(atualizar);
+      System.out.println("Atualizou o nome de Rafael para Cristiano.");
+    } catch (SQLException ex) {
+      System.out.println("Não conseguiu atualizar uma pessoa no BD.");
+    } finally {
+      conexao.desconectar(conn);
+    }
+  }
+}
