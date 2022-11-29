@@ -4,15 +4,21 @@ import javax.persistence.Persistence;
 
 public class JpaUtil {
 
-private static EntityManagerFactory factory;
+    private static EntityManagerFactory factory;
 
-static {
-factory = Persistence.createEntityManagerFactory("AlgaWorksPU");
-}
-public static EntityManager getEntityManager() {
-return factory.createEntityManager();
-}
-public static void close() {
-factory.close();
-}
+    static {
+
+    factory = Persistence.createEntityManagerFactory("AlgaWorksPU");
+    }
+
+    public static EntityManager getEntityManager() {
+
+    return factory.createEntityManager();
+
+    }
+
+    public static void close() {
+    factory.close();
+
+    }
 }
