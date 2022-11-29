@@ -9,12 +9,12 @@ public class ListaEditorasComJPA {
 
  EntityManager manager = factory.createEntityManager();
 
- EditoraRepository editoraRepository = new EditoraRepository (manager) ;
+ EditoraRepository editoraRepository = new EditoraRepository (manager);
 
 List<Editora> editoras = editoraRepository.buscaTodas();
 
  for(Editora e : editoras ) {
- System.out.println("EDITORA : " + e . getNome () + " - " + e . getEmail () ) ;
+ System.out.println("EDITORA : " + e . getNome () + " - " + e . getEmail ()) ;
  }
 
  manager.close () ;
