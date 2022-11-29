@@ -18,8 +18,7 @@ import javax.persistence.TemporalType;
  * Classe utilizada para representar o emprestimo de um livro para um cliente.
  */
 @NamedQueries({
-  @NamedQuery(name = "Emprestimo.consultarTodos",
-              query= "SELECT e FROM Emprestimo e"),
+  @NamedQuery(name = "Emprestimo.consultarTodos", query= "SELECT e FROM Emprestimo e"),
 
   @NamedQuery(name = "Emprestimo.qtdEmprestimosPorLivro",
               query = " SELECT count(e) " +
