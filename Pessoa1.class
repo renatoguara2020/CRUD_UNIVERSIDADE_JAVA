@@ -1,0 +1,119 @@
+package br.com.crud.bean;
+ 
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
+import org.apache.log4j.Logger;
+import br.com.crud.entity.Pessoa;
+import br.com.crud.tool.EntityManagerUtil;
+ 
+public class PessoaBean {
+ 
+  private static final Logger log = Logger.getLogger(PessoaBean.class);
+ 
+  private EntityManager entityManager;
+ 
+  private Pessoa pessoa = new Pessoa();
+ 
+  private Long id;
+ 
+  private List<Pessoa> list;
+ 
+  public String persist() {
+    log.info("Cadastrando pessoa: " + pessoa.getNome());
+    try {
+      EntityTransaction transacao = getEntityManager().getTransaction();
+ 
+      transacao.begin();
+      getEntityManager().persist(pessoa);
+      transacao.commit();
+ 
+      newInstance();
+      list = null;
+ 
+      return "sucesso";
+    } catch (Exception e) {
+      e.printStackTrace();
+      return "falhou";
+    }
+  }
+ 
+  public String update() {
+    log.info("Alterando pessoa: " + pessoa.getNome());
+    try {
+      EntityTransaction transacao = getEntityManager().getTransaction();
+ 
+      transacao.begin();
+      getEntityManager().merge(pessoa);
+      transacao.commit();
+ 
+      newInstance();
+ 
+      return "sucesso";
+    } catch (Exception e) {
+      e.printStackTrace();
+      return "falhou";
+    }
+  }
+ 
+  public String remove() {
+    log.info("Removendo pessoa: " + pessoa.getNome());
+    try {
+      EntityTransaction transacao = getEntityManager().getTransaction();
+ 
+      transacao.begin();
+      getEntityManager().remove(pessoa);
+      transacao.commit();
+ 
+      newInstance();
+      list = null;
+ 
+      return "sucesso";
+    } catch (Exception e) {
+      e.printStackTrace();
+      return "falhou";
+    }
+  }
+ 
+  @SuppressWarnings("unchecked")
+  public List getList() {
+    if (list == null) {
+      log.info("Buscando lista de pessoas");
+      list = getEntityManager().createQuery("FROM Pessoa")
+        .getResultList();
+    }
+ 
+    return list;
+  }
+ 
+  public EntityManager getEntityManager() {
+    if (entityManager == null) {
+      entityManager = EntityManagerUtil.getInstance().createEntityManager();
+    }
+ 
+    return entityManager;
+  }
+ 
+  public void setPessoa(Pessoa pessoa) {
+    this.pessoa = pessoa;
+  }
+ 
+  public Pessoa getPessoa() {
+    return pessoa;
+  }
+ 
+  public void setId(Long id) {
+    this.id = id;
+    if (id != null) {
+      pessoa = getEntityManager().find(Pessoa.class, id);
+    }
+  }
+ 
+  public Long getId() {
+    return id;
+  }
+ 
+  public void newInstance() {
+    pessoa = new Pessoa();
+  }
+}
