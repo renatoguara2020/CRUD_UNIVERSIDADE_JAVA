@@ -5,8 +5,7 @@ import javax.persistence.Persistence ;
 public class ListaEditorasComJPA {
 
  public static void main ( String [] args ) {
- EntityManagerFactory factory =
- Persistence.createEntityManagerFactory("livraria-pu");
+ EntityManagerFactory factory = Persistence.createEntityManagerFactory("livraria-pu");
 
  EntityManager manager = factory.createEntityManager();
 
@@ -15,7 +14,7 @@ public class ListaEditorasComJPA {
 List<Editora> editoras = editoraRepository.buscaTodas();
 
  for(Editora e : editoras ) {
- System.out.println(" EDITORA : " + e . getNome () + " - " + e . getEmail () ) ;
+ System.out.println("EDITORA : " + e . getNome () + " - " + e . getEmail () ) ;
  }
 
  manager.close () ;
