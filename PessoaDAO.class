@@ -14,16 +14,18 @@ public class PessoaDAO {
    * @return
    */
   private EntityManager getEntityManager() {
-    EntityManagerFactory factory = null;
-    EntityManager entityManager = null;
+
+    EntityManagerFactory emf = null;
+    EntityManager manager = null;
+
     try {
       //Obtém o factory a partir da unidade de persistência.
       factory = Persistence.createEntityManagerFactory("ExemplosJPAPU");
       //Cria um entity manager.
-      entityManager = factory.createEntityManager();
+      entityManager = emf.createEntityManager();
       //Fecha o factory para liberar os recursos utilizado.
     } finally {
-      factory.close();
+      emf.close();
     }
     return entityManager;
   }
@@ -35,23 +37,23 @@ public class PessoaDAO {
    * @throws java.lang.Exception
    */
   public Pessoa salvar(Pessoa pessoa) throws Exception {
-    EntityManager entityManager = getEntityManager();
+    EntityManager manager = getEntityManager();
     try {
       // Inicia uma transação com o banco de dados.
-      entityManager.getTransaction().begin();
+      manager.getTransaction().begin();
       System.out.println("Salvando a pessoa.");
       // Verifica se a pessoa ainda não está salva no banco de dados.
       if(pessoa.getId() == null) {
         //Salva os dados da pessoa.
-        entityManager.persist(pessoa);
+        manager.persist(pessoa);
       } else {
         //Atualiza os dados da pessoa.
-        pessoa = entityManager.merge(pessoa);
+        pessoa = manager.merge(pessoa);
       }
       // Finaliza a transação.
-      entityManager.getTransaction().commit();
+      manager.getTransaction().commit();
     } finally {
-      entityManager.close();
+      manager.close();
     }
     return pessoa;
   }
@@ -61,19 +63,19 @@ public class PessoaDAO {
    * @param id
    */
   public void excluir(Long id) {
-    EntityManager entityManager = getEntityManager();
+    EntityManager manager = getEntityManager();
     try {
       // Inicia uma transação com o banco de dados.
-      entityManager.getTransaction().begin();
+      manager.getTransaction().begin();
       // Consulta a pessoa na base de dados através do seu ID.
-      Pessoa pessoa = entityManager.find(Pessoa.class, id);
+      Pessoa pessoa = manager.find(Pessoa.class, id);
       System.out.println("Excluindo os dados de: " + pessoa.getNome());
       // Remove a pessoa da base de dados.
-      entityManager.remove(pessoa);
+      manager.remove(pessoa);
       // Finaliza a transação.
-      entityManager.getTransaction().commit();
+      manager.getTransaction().commit();
     } finally {
-      entityManager.close();
+      manager.close();
     }
   }
 
@@ -83,13 +85,13 @@ public class PessoaDAO {
    * @return o objeto Pessoa.
    */
   public Pessoa consultarPorId(Long id) {
-    EntityManager entityManager = getEntityManager();
+    EntityManager manager = getEntityManager();
     Pessoa pessoa = null;
     try {
       //Consulta uma pessoa pelo seu ID.
-      pessoa = entityManager.find(Pessoa.class, id);
+      pessoa = manager.find(Pessoa.class, id);
     } finally {
-      entityManager.close();
+      manager.close();
     }
     return pessoa;
   }
