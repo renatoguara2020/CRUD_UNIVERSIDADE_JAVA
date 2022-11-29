@@ -7,13 +7,13 @@ class EditoraRepository {
      }
     
      public void adiciona (Editora e) {
-     this.manager.persist (e) ;
+     this.manager.persist(e);
      }
      public Editora busca (Long id) {
-     return this.manager.find (Editora.class,id) ;
+     return this.manager.find (Editora.class,id);
      }
      public List <Editora>buscaTodas(){
-     Query query = this.manager.createQuery("SELECT e FROM Editora e") ;
+     Query query = this.manager.createQuery("SELECT e FROM Editora e");
      return query.getResultList();
      }
      }
