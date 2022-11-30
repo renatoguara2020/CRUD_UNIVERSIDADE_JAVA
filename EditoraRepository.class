@@ -16,4 +16,8 @@ class EditoraRepository {
      Query query = this.manager.createQuery("SELECT e FROM Editora e");
      return query.getResultList();
      }
+
+     public deletar (Editora e){
+        this.manager.delete(e);
+     }
      }
