@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 public class DAO {
 
   public EntityManager getEntityManager() {
+    
     EntityManagerFactory emf = Persistence.createEntityManagerFactory("ExemplosJPAPU");
     EntityManager manager = emf.createEntityManager();
     emf.close();
