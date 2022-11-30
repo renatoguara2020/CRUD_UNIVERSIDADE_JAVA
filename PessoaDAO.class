@@ -43,7 +43,7 @@ public class PessoaDAO {
       manager.getTransaction().begin();
       System.out.println("Salvando a pessoa.");
       // Verifica se a pessoa ainda não está salva no banco de dados.
-      if(pessoa.getId() == null) {
+      if(pessoa.getId() == null || pessoa.getId().length == '') {
         //Salva os dados da pessoa.
         manager.persist(pessoa);
       } else {
