@@ -5,10 +5,10 @@ import javax.persistence.Persistence ;
 public class ListaEditorasComJPA {
 
  public static void main ( String [] args ) {
-    
- EntityManagerFactory factory = Persistence.createEntityManagerFactory("livraria-pu");
 
- EntityManager manager = factory.createEntityManager();
+ EntityManagerFactory emf = Persistence.createEntityManagerFactory("livraria-pu");
+
+ EntityManager manager = emf.createEntityManager();
 
  EditoraRepository editoraRepository = new EditoraRepository (manager);
 

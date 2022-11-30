@@ -1,4 +1,4 @@
-package br.universidadejava.jpa.exemplo1.dao;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
