@@ -77,8 +77,7 @@ public class PessoaBean {
   public List getList() {
     if (list == null) {
       log.info("Buscando lista de pessoas");
-      list = getEntityManager().createQuery("FROM Pessoa")
-        .getResultList();
+      list = getEntityManager().createQuery("FROM Pessoa").getResultList();
     }
  
     return list;
