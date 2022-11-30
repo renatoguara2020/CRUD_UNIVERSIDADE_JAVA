@@ -20,9 +20,9 @@ public class PessoaDAO {
 
     try {
       //Obtém o factory a partir da unidade de persistência.
-      factory = Persistence.createEntityManagerFactory("JPAPU");
+      emf = Persistence.createEntityManagerFactory("JPAPU");
       //Cria um entity manager.
-      entityManager = emf.createEntityManager();
+      manager = emf.createEntityManager();
       //Fecha o factory para liberar os recursos utilizado.
     } finally {
       emf.close();
