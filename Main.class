@@ -34,3 +34,22 @@ public class PessoaDAOTeste {
     dao.excluir(pessoa.getId());
   }
 }
+
+###############################################################################
+
+public class JPADemo
+{
+        public static void main(String[] args)
+    {
+                EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPAPU");
+                EntityManager em = emf.createEntityManager();
+                 
+                em.getTransaction().begin();
+                Employee employee = new Employee();
+                employee.setName("Chandan");
+                System.out.println("COMIITING");
+                em.persist(employee);
+                em.getTransaction().commit();
+                 
+    }
+}
