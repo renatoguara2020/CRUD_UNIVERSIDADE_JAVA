@@ -1,0 +1,49 @@
+package br.edu.fajesu.testes;
+
+import java.util.List;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import br.edu.fajesu.entity.Pessoa;
+import br.edu.fajesu.repository.PessoaDAO;
+
+
+public class PessoaMain {
+
+	public static void main(String[] args)  {
+		
+		
+		EntityManagerFactory emf = Persistence.createEntityManagerFactory("JPAPU");
+		EntityManager manager = emf.createEntityManager();
+		Pessoa pessoa = new Pessoa();
+		pessoa.setNome("Dona Creuza1000");
+		pessoa.setEmail("creuza071@gmail.com1000");
+		pessoa.setObservations( "INFO: HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]");
+		System.out.println("Salvando a pessoa");
+		PessoaDAO dao = new PessoaDAO();
+		
+		manager.getTransaction().begin();
+		manager.persist(pessoa);
+		manager.getTransaction().commit();
+		
+		
+		
+		
+		  List<Pessoa> pessoas = dao.buscaTodas();
+		  
+		  
+		  for(Pessoa p : pessoas ) {
+			  System.out.println("Pessoa : "+p.getId()+ " - " + p . getNome () + " - " + p . getEmail ()+ " - "+p.getObservations()) ;
+			  }
+	
+		
+		     
+		//System.out.println("Salvando a pessoa  " + pessoas.size());
+	
+		
+
+	}
+
+}
