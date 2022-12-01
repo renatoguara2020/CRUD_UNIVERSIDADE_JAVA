@@ -15,10 +15,10 @@ public class SendingEmail {
     public static void main(String[] args) {
 
         // Recipient's email ID needs to be mentioned.
-        String to = "renatoguara2020@outlook.com";
+        String to = "renatoguara2019@yahoo.com";
 
         // Sender's email ID needs to be mentioned
-        String from = "renatoguara2019@yahoo.com";
+        String from = "renatoguara2020@gmail.com";
 
         // Assuming you are sending email from through gmails smtp
         String host = "smtp.gmail.com";
@@ -37,7 +37,7 @@ public class SendingEmail {
 
             protected PasswordAuthentication getPasswordAuthentication() {
 
-                return new PasswordAuthentication("renatoguara2020@gmail.com", "dtkis");
+                return new PasswordAuthentication("renatoguara2020@gmail.com", "dtk");
 
             }
 
@@ -57,7 +57,7 @@ public class SendingEmail {
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
 
             // Set Subject: header field
-            message.setSubject("Testando Sending Emails With Mail in Java WEB!!!!!");
+            message.setSubject("Testando sending emails with Java WEB!");
 
             // Now set the actual message
             message.setText("This is actual message with Java Sending Emails nowww!!!!!!!");
@@ -72,6 +72,3 @@ public class SendingEmail {
 
     }
 
-}public class SendingEmailsWithGoogleSmtp {
-    
-}
