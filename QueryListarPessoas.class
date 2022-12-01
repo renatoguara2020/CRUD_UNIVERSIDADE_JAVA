@@ -35,7 +35,7 @@ public class PessoaMain {
 		  
 		  
 		  for(Pessoa p : pessoas ) {
-			  System.out.println("Pessoa : "+p.getId()+ " - " + p . getNome () + " - " + p . getEmail ()+ " - "+p.getObservations()) ;
+			  System.out.println("Pessoa : "+p.getId()+ " - " + p.getNome () + " - " + p.getEmail ()+ " - "+p.getObservations()) ;
 			  }
 	
 		
